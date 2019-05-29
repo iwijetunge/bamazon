@@ -1,3 +1,12 @@
+## Overview
+
+This application is an Amazon-like storefront utilizing MySQL
+
+The application will take in orders from customers and deplete stock from the store's inventory. 
+
+The "console.table"  npm package was used to display the tables in a more readable format.
+
+
 # bamazon
 Initial screen 
 
@@ -20,7 +29,7 @@ When "Y" was entered the updated quantity is displayed
 <img src="images/pic4.png">
 
 
-The next screens shows the application in action when the customer requests a quantitiy that is less more than the quantity on hand.
+The next screens shows the application in action when the customer requests a quantitiy that is more than the quantity on hand.
 
 <img src="images/pic5.png">
 
