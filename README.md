@@ -31,8 +31,6 @@ When "Y" was entered the updated quantity is displayed
 
 The next screens shows the application in action when the customer requests a quantitiy that is more than the quantity on hand.
 
-<img src="images/pic5.png">
-
 <img src="images/pic6.png">
 
 
