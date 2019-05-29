@@ -4,6 +4,10 @@ This application is an Amazon-like storefront utilizing MySQL
 
 The application will take in orders from customers and deplete stock from the store's inventory. 
 
+If the quantity on hand is equal or greater than the requested qhantity, then the order is fulfiled and the quantity on hand is updated.
+
+If the customer requestes a quantity more than what is on hand, the customer is notified and the database is not updated.
+
 The "console.table"  npm package was used to display the tables in a more readable format.
 
 
