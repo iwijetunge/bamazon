@@ -1,8 +1,9 @@
 require("dotenv").config();
 const mysql = require("mysql");
-const cTable = require("console.table");
+const cTable = require("console.table");   //Displays tabular data as a table.
 const inquirer = require("inquirer");
 
+// Creat connection
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : process.env.mysqlusername,
@@ -10,6 +11,7 @@ var connection = mysql.createConnection({
     database : 'bamazon'
   });
 
+// Starts the application and displayed the products table  
   function startApp(){
     connection.connect(function(err){
         if(err) throw err;
@@ -18,6 +20,7 @@ var connection = mysql.createConnection({
     });
   }
 
+  // Displayed all rowes from the products table  
   function displayProducts(){
     connection.query('SELECT * from products', function (error, results, fields) {
         if (error) throw error;
@@ -28,6 +31,7 @@ var connection = mysql.createConnection({
       });
   }
 
+  // Allowed the user to select a product and quantity
   function promptCustomer(products){
     inquirer.prompt([{
         type: "list",
@@ -45,6 +49,7 @@ var connection = mysql.createConnection({
     })
   }
 
+  //Queris the database to check quantity on hand for selected item
   function checkAvailability(item, quantity){
     connection.query(`SELECT * FROM products WHERE product_name=?`, [item], function(error, results, fields){
         if(error) throw error;        
@@ -59,7 +64,7 @@ var connection = mysql.createConnection({
         return continuePrompt();
     })
   }
-
+// If the customer's request can be fulfilled, then update the quantity on hand
 function updateDatabase(item, updatedQuantity) {
     connection.query(`UPDATE products SET ? WHERE ?`, [
     {
@@ -74,7 +79,7 @@ function updateDatabase(item, updatedQuantity) {
     return continuePrompt();
 })
 } 
-
+// Allowes the user to continue shopping or quit the application
 function continuePrompt(){
     inquirer.prompt([{
         type: "confirm",
